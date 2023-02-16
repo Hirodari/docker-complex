@@ -8,9 +8,9 @@ iam user, permissions, add permissions, choose "AWSCodeCommitPowerUse" attached 
 
 2. create repo from code commit and follow the instructions depends_on on which channel
 https, ssh or https(GRC)
-3. git push  --set-upstream origin development
-
-
+3. git push  --set-upstream origin development # this will help push to another branch other the origin
+# below are command to remote origin location config set up
 git remote add origin git@github.com:Hirodari/docker-complex.git
 git remote add origin ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/code-complex
+# this will help add or append a different remote origin location
 git remote set-url --add origin ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/code-complex
