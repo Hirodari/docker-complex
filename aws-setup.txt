@@ -1,0 +1,11 @@
+How to set up AWS in general
+
+1. create a user with programmatic creds
+1.1 iam => users => security credentials => create access key
+1.2 install aws cli , then configure aws configure, then test 'aws iam list-users'
+1.3 grant the user the permission to work in codecommit services as an admin,
+iam user, permissions, add permissions, choose "AWSCodeCommitPowerUse" attached directly
+
+2. create repo from code commit and follow the instructions depends_on on which channel
+https, ssh or https(GRC)
+3. git push  --set-upstream origin development
