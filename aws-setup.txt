@@ -10,34 +10,6 @@ iam user, permissions, add permissions, choose "AWSCodeCommitPowerUse" attached 
 https, ssh or https(GRC)
 3. git push  --set-upstream origin development
 
-[remote "origin"]
-        url = git@github.com:Hirodari/docker-complex.git
-        fetch = +refs/heads/*:refs/remotes/origin/*
-user.name=Fred Bitenyo
-user.email=fredbitenyo@gmail.com
-core.repositoryformatversion=0
-core.filemode=true
-core.bare=false
-core.logallrefupdates=true
-remote.origin.url=git@github.com:Hirodari/docker-complex.git
-remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
-branch.main.remote=origin
-branch.main.merge=refs/heads/main
-[remote "origin"]
-       url = ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/docker-complex
-       fetch = +refs/heads/*:refs/remotes/origin/*
-user.name=Fred Bitenyo
-user.email=fredbitenyo@gmail.com
-core.repositoryformatversion=0
-core.filemode=true
-core.bare=false
-core.logallrefupdates=true
-remote.origin.url=ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/docker-complex
-remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
-branch.master.remote=origin
-branch.master.merge=refs/heads/master
-branch.development.remote=origin
-branch.development.merge=refs/heads/development
 
 git remote add origin git@github.com:Hirodari/docker-complex.git
 git remote add origin ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/code-complex
