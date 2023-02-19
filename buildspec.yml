@@ -23,4 +23,4 @@ phases:
       - echo "Pushing our images to docker hub repo"
       - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
       - docker tag $DOCKER_ID/multi-nginx $DOCKER_ID/multi-nginx
-      - docker push $DOCKER_ID/$multi-nginx
+      - docker push $DOCKER_ID/aos-dashboard:multi-nginx
