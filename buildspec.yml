@@ -7,13 +7,18 @@ phases:
   pre_build:
     commands:
       - echo "building a test container"
-      - docker build -t hirodaridevdock/react-test -f ./client/Dockerfile.dev ./client
+      - docker build -t $DOCKER_ID/react-test -f ./client/Dockerfile.dev ./client
       - echo "testing the container"
-      - docker run -e CI=true hirodaridevdock/react-test npm test
+      - docker run -e CI=true $DOCKER_ID/react-test npm test
   build:
     commands:
       - echo "building production containers"
-      - docker build -t hirodaridevdock/multi-client ./client
-      - docker build -t hirodaridevdock/multi-nginx ./nginx
-      - docker build -t hirodaridevdock/multi-server ./server
-      - docker build -t hirodaridevdock/multi-worker ./worker
+      - docker build -t $DOCKER_ID/multi-client ./client
+      - docker build -t $DOCKER_ID/multi-nginx ./nginx
+      - docker build -t $DOCKER_ID/multi-server ./server
+      - docker build -t $DOCKER_ID/multi-worker ./worker
+  post_build:
+    commands:
+      - echo "Pushing our images to docker hub repo"
+      - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
+      - docker push $DOCKER_USERNAME/multi-client
