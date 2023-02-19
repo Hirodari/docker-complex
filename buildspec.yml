@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 3.10
+  pre_build:
+    commands:
+      - echo "building a test container"
+      - docker build -t hirodaridevdock/react-test -f ./client/Dockerfile.dev ./client
+      - echo "testing the container"
+      - docker run -e CI=true hirodaridevdock/react-test npm test
+  build:
+    commands:
+      - echo "building production containers"
+      - docker build -t hirodaridevdock/multi-client ./client
+      - docker build -t hirodaridevdock/multi-nginx ./nginx
+      - docker build -t hirodaridevdock/multi-server ./server
+      - docker build -t hirodaridevdock/multi-worker ./worker

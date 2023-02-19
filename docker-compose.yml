@@ -7,18 +7,18 @@ services:
   redis:
     image: 'redis:latest'
   nginx:
-    # depends_on:
-    #   - api
-    #   - client
+    depends_on:
+      - api
+      - client
     restart: always
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./nginx
     ports:
-      - '3050:80'
+      - '4000:80'
   api:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./server
     volumes:
       - /app/node_modules
@@ -42,7 +42,7 @@ services:
       - ./client:/app
   worker:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./worker
     volumes:
       - /app/node_modules

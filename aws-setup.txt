@@ -14,3 +14,5 @@ git remote add origin git@github.com:Hirodari/docker-complex.git
 git remote add origin ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/code-complex
 # this will help add or append a different remote origin location
 git remote set-url --add origin ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/code-complex
+
+codebuild test the code => push the the image to docker-hub => codedeploy deploy the code to beanstealk
