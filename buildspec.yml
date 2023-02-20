@@ -1,9 +1,9 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      python: 3.10
+  # install:
+  #   runtime-versions:
+  #     python: 3.10
   pre_build:
     commands:
       - echo "building a test container"
@@ -14,13 +14,22 @@ phases:
   build:
     commands:
       - echo "building production containers"
-      # - docker build -t $DOCKER_ID/multi-client ./client
+      - docker build -t $DOCKER_ID/multi-client ./client
       - docker build -t $DOCKER_ID/multi-nginx ./nginx
-      # - docker build -t $DOCKER_ID/multi-server ./server
-      # - docker build -t $DOCKER_ID/multi-worker ./worker
+      - docker build -t $DOCKER_ID/multi-server ./server
+      - docker build -t $DOCKER_ID/multi-worker ./worker
   post_build:
     commands:
       - echo "Pushing our images to docker hub repo"
       - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
-      - docker tag $DOCKER_ID/multi-nginx $DOCKER_ID/multi-nginx
-      - docker push $DOCKER_ID/aos-dashboard:multi-nginx
+      # docker tag [source image name] [target DOCKER_ID/DOCKER_REPO_NAME:tagname]
+      - docker tag $DOCKER_ID/multi-nginx $DOCKER_ID/complex-react:1.0-nginx
+      - docker tag $DOCKER_ID/multi-client $DOCKER_ID/complex-react:1.0-client
+      - docker tag $DOCKER_ID/multi-server $DOCKER_ID/complex-react:1.0-server
+      - docker tag $DOCKER_ID/multi-worker $DOCKER_ID/complex-react:1.0-worker
+      # create docker repo
+      # docker push DOCKER_ID/DOCKER_REPO:tagname
+      - docker push $DOCKER_ID/complex-react:1.0-nginx
+      - docker push $DOCKER_ID/complex-react:1.0-client
+      - docker push $DOCKER_ID/complex-react:1.0-server
+      - docker push $DOCKER_ID/complex-react:1.0-worker
